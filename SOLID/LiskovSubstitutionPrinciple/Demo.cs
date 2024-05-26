@@ -2,8 +2,8 @@
 {
   public class Rectangle
   {
-      public int Height { get; set; }
-      public int Width { get; set; }
+      public virtual int Height { get; set; }
+      public virtual int Width { get; set; }
 
       public Rectangle()
       {
@@ -12,8 +12,8 @@
 
       public Rectangle(int height, int width)
       {
-            Height = height; 
-            Width = width;
+        Height = height; 
+        Width = width;
       }
 
       public override string ToString()
@@ -24,7 +24,7 @@
   }
 
   public class Square : Rectangle { 
-    public new int Width
+    public override int Width
     {
       set
       {
@@ -32,7 +32,7 @@
       }
     }
 
-    public new int Height
+    public override int Height
     {
       set
       {
@@ -51,11 +51,9 @@
       Rectangle rectangle = new Rectangle(3, 4);
       Console.WriteLine($"{rectangle} has area {Area(rectangle)}");
 
-      //Before LSP - START
       Rectangle square = new Square();
       square.Width = 2;
       Console.WriteLine($"{square} has area {Area(square)}");
-      //After LSP - END
 
       Console.ReadLine();
     }
