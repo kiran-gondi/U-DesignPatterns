@@ -1,4 +1,7 @@
-﻿namespace OpenClosePrinciple
+﻿using System;
+using System.Collections.Generic;
+
+namespace OpenClosePrinciple
 {
   internal class Program
   {
@@ -68,10 +71,11 @@
        // OCP = open for extension but closed for modification
     }
 
-    // we introduce two new interfaces that are open for extension
+    //NOTE: we introduce two new interfaces that are open for extension
     public interface ISpecification<T>
     {
-      bool IsSatisfiedBy(Product product);
+      bool IsSatisfiedBy(T t); //We can have generic type method too.
+      //bool IsSatisfiedBy(Product product);
     }
 
     public interface IFilter<T>
@@ -119,7 +123,7 @@
         this.second = second;
       }
 
-      public bool IsSatisfiedBy(Product product)
+      public bool IsSatisfiedBy(T product)
       {
         return first.IsSatisfiedBy(product) && second.IsSatisfiedBy(product);
       }
